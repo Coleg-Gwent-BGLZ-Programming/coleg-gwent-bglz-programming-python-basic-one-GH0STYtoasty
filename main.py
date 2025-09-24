@@ -1,25 +1,30 @@
-# main.py - Personal Data Manager
+# Get basic details
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
 
-# TODO: Step 1 - Prompt the user to enter their name and age
-# Hint: Use input() and store the values in variables
+# Work out birth year and store with current year in a tuple
+current_year = 2025
+birth_year = current_year - age
+year_info = (birth_year, current_year)
 
-# TODO: Step 2 - Ask the user to enter 3 hobbies
-# Hint: Use a loop to collect hobbies and store them in a list
+# Collect hobbies (using a set so they are unique)
+hobbies = set()
+print("Enter hobbies (type 'done' to finish):")
+while True:
+    hobby = input("Hobby: ")
+    if hobby.lower() == "done":
+        break
+    hobbies.add(hobby)
 
-# TODO: Step 3 - Create a dictionary to store the user's name, age, and hobbies
-# Hint: Use key-value pairs to organize the data
+# Store everything in a dictionary
+user_data = {
+    "Name": name,
+    "Age": age,
+    "Hobbies": list(hobbies),
+    "Year Info": year_info
+}
 
-# TODO: Step 4 - Display the user's information using formatted strings
-# Hint: Use f-strings to format the output
-
-# TODO: Step 5 - Convert the hobbies list into a set to remove duplicates
-# Hint: Use the set() function
-
-# TODO: Step 6 - Calculate the user's birth year and store it in a tuple with the current year
-# Hint: Use subtraction and a tuple to store both years
-
-# TODO: Step 7 - Create a function that takes the dictionary and returns a summary string
-# Hint: Use string concatenation or f-strings inside the function
-
-# TODO: Step 8 - Call the function and print the summary
-# Hint: Pass the dictionary to the function and print the result
+# Display the information back to the user
+print(f"\nHello {user_data['Name']}, age {user_data['Age']}.")
+print(f"Born in {user_data['Year Info'][0]}, current year {user_data['Year Info'][1]}.")
+print("Hobbies:", ", ".join(user_data["Hobbies"]))
